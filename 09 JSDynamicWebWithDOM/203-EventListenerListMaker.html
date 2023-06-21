@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        
+        td:first-child {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" name="" id="addFriend">
+        <input type="button" value="Add Friend" id="addNew">
+    </div>
+    <div class="output"></div>
+
+    <script>
+        var myArray = ["Laurence", "Mike", "John", "Larry", "Kim", "Joanne", "Lisa", "Janet", "Jane"];
+        window.onload = build;
+
+        function build() {
+            var html = '<h1>Click Table</h1><table>';
+            for (var x = 0; x < myArray.length; x++) {
+                html += '<tr id="id' + x + '" data-row="' + x + '"><td>' + myArray[x] + '</td><td><a href="#" data-action="delete">Del<a/></td><td><a href="#" data-action="edit">Edit</a></td></tr>';
+            }
+            document.querySelector('.output').innerHTML = html;
+
+            var dad = document.querySelectorAll('[data-action="delete"]');
+            for (var x = 0; x < dad.length; x++) {
+                dad[x].addEventListener('click', function() {
+                    event.preventDefault();
+                    var iValue = this.closest('[data-row]').getAttribute('data-row');
+                    var r = myArray.splice(iValue, 1);
+                    build();
+                    console.log(r);
+                });
+            }
+            console.log(dad);
+        }
+    </script>
+</body>
+</html>

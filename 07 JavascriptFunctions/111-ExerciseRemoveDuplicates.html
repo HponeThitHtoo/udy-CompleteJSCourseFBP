@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercise Remove Duplicates</title>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        var output = document.getElementById('output');
+
+        var myArray = ['hello', 'world', 23423, 44334, 22, 'javascript', 'hello', 'world', 23423, 44334, 22, 'javascript', 'hello', 'world', 23423, 44334, 22, 'javascript'];
+
+        var myArrayClean = removeDup(myArray);
+        output.innerHTML = myArray + '<br>' + myArrayClean;
+
+        function removeDup(arr) {
+            var cArray = [];
+            var cObject = {};
+            
+            for (var x = 0; x < arr.length; x++) {
+                console.log(arr[x]);
+                cObject[arr[x]] = 'whatever';
+            }
+
+            console.log(cObject);
+
+            for (var k in cObject) {
+                cArray.push(k);
+            }
+
+            return cArray;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output">Complete JavaScript Course</div>
+
+    <script>
+        let name = 'Laurence';
+        name = 'John';
+        let message = `${name} was here today`;
+        console.log(message);
+
+
+        function updateMessage(p) {
+            let message = `${p} was here today`;
+            console.log(message);
+            return message;
+        }
+
+        for (let i = 0; i < 10; i++) {
+            let message = `${i} count now`;
+            console.log(message);
+        }
+
+        console.log(updateMessage('John'));
+    </script>
+</body>
+</html>

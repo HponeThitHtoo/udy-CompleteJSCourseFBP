@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Complete JavaScript Course</h1>
+    <div>
+        <input type="text" name="" id="addItem">
+        <input type="button" value="Add to List" id="addNew">
+    </div>
+    <div id="output">
+        <h1>Shopping List</h1>
+        <ol id="sList">
+
+        </ol>
+    </div>
+
+    <script>
+        document.getElementById('addNew').onclick = function() {
+            addOne();
+        }
+
+        function addOne() {
+            var a = document.getElementById('addItem').value;
+            var li = document.createElement('li');
+            li.appendChild(document.createTextNode(a));
+            document.getElementById('sList').appendChild(li);
+        }
+    </script>
+</body>
+</html>

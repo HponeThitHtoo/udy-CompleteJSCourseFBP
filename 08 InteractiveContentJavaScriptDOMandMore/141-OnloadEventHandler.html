@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Onload Event Handler</title>
+</head>
+<body onload="myFun('body;')">
+    <div id="wrapper">Page 1</div>
+    <form action="" name="myForm">
+        <input type="button" value="click 1" id="id1">
+        <input type="button" value="click 2" id="id2">
+        <input type="button" value="click 3" id="id3">
+    </form>
+
+    <script>
+        var output = document.getElementById('wrapper');
+
+        window.onload = function(event) {
+            myFun('window');
+        }
+
+        function myFun(a) {
+            output.innerHTML = 'WELCOME ' + a;
+        }
+    </script>
+</body>
+</html>

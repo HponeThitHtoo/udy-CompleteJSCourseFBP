@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="message1">Message 1</div>
+    <div id="message2">Message 2</div>
+    <div class="output">Test Me 1</div>
+    <div class="output">Test Me 2</div>
+    <div class="output highlight">Test Me 3</div>
+    <div class="output">Test Me 4</div>
+    <div class="output">Test Me 5</div>
+    <div class="output">Test Me 6</div>
+    <div class="output highlight">Test Me 7</div>
+    <div class="output">Test Me 8</div>
+    <div class="output">Test Me 9</div>
+    <div class="output">Test Me 10</div>
+
+    <script>
+        var elClass = document.getElementsByClassName('output');
+        var highlights = document.getElementsByClassName('highlight');
+        var message1 = document.getElementById('message1');
+        var message2 = document.getElementById('message2');
+
+        for (var x = 0; x < elClass.length; x++) {
+            elClass[x].onclick = function() {
+                // message.innerHTML = el.innerHTML;
+
+                console.log(event.target.innerHTML);
+                message1.innerHTML = event.target.innerHTML;
+            }
+        }
+
+        for (var i = 0; i < highlights.length; i++) {
+            highlights[i].onclick = function() {
+                console.log(event.target.innerHTML);
+                message2.innerHTML = event.target.innerHTML;
+            }
+        }
+    </script>
+</body>
+</html>

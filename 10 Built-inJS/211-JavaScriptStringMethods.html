@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="message">Complete JavaScript Course</div>
+
+    <input type="text" name="inputString" id="inputString">
+    <input type="number" name="lengthString" id="lengthString">
+    <input type="button" value="Check Answer" id="btn">
+    <script>
+
+        var message = document.getElementById('message');
+
+        var btn = document.getElementById('btn');
+
+        btn.onclick = function() {
+            
+            var inputString = document.getElementById('inputString').value;
+            var lengthString = document.getElementById('lengthString').value;
+
+            if (inputString.length == Number(lengthString)) {
+                message.innerHTML = 'Correct!. It was ' + inputString.length;
+            } else {
+                message.innerHTML = 'Wrong!. It was ' + inputString.length;
+            }
+        }
+
+        var a = 'world hello';
+        var b = new String('Hello World');
+    </script>
+</body>
+</html>

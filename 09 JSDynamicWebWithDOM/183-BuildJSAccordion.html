@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .con {
+            border: 1px solid black;
+            padding: 20px;
+            font-size: 0.8em;
+            display: none;
+        }
+        .acc {
+            font-size: 1.5em;
+            background-color: #ddd;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="acc">Information about JavaScript</div>
+    <div class="con">Complete JavaScript Course Complete JavaScript Course
+        <img src="http://via.placeholder.com/350x150?text=Image1" alt="">
+    </div>
+
+    <div class="acc">More Read JavaScript</div>
+    <div class="con">Blah Blah Blah Blah Blah Blah
+        <img src="http://via.placeholder.com/150x150?text=Image2" alt="">
+    </div>
+
+    <script>
+        var aTitle = document.querySelectorAll('.acc');
+        var c = document.querySelectorAll('.con');
+
+        for (var x = 0; x < aTitle.length; x++) {
+            aTitle[x].onclick = function() {
+                // this.nextElementSibling.classList.toggle('active');
+
+                // updAcc(aTitle, 'active', 'remove');
+                cCon(this.nextElementSibling);
+                
+                this.nextElementSibling.classList.toggle('active');
+            }
+        }
+
+        /* function updAcc(el, c, a) {
+            for (var x = 0; x < el.length; x++) {
+                el[x].nextElementSibling.classList[a](c);
+            }
+        } */
+
+        function cCon(t) {
+            for (var x = 0; x < c.length; x++) {
+                if (t != c[x]) c[x].classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="message">Complete JavaScript Course</div>
+    <div id="message1"></div>
+    <input type="text" name="" id="myString">
+    <input type="button" value="Guess" onclick="rGuess()">
+
+    <script>
+
+        var message = document.getElementById('message');
+        var message1 = document.getElementById('message1');
+        var myArr = ["javascript", "Hello", "world", "course"];
+
+        window.onload = sWord;
+
+        var randomWord;
+        
+        function  sWord() {
+            var w = myArr[Math.floor(Math.random() * myArr.length)];
+            randomWord = w;
+            w = w.toLowerCase();
+
+            var s = "";
+            var wLength = w.length;
+
+            for (var x = 0; x < wLength; x++) {
+                var i = Math.floor(Math.random() * w.length);
+                s += w[i];
+                w = w.substr(0, i) + w.substr(i + 1);
+            }
+
+            message.innerHTML = '<b>Guess this word: ' + s + '</b>';
+        }
+
+        function rGuess() {
+            var guess = document.getElementById('myString').value;
+            
+            if (guess.toLocaleLowerCase() == randomWord.toLocaleLowerCase()) {
+                message1.innerHTML = 'Correct!';
+            } else {
+                message1.innerHTML = 'Wrong it was ' + randomWord;
+            }
+
+            sWord();
+        }
+    </script>
+</body>
+</html>

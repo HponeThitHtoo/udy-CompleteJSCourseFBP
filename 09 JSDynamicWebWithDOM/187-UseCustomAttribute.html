@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Complete JavaScript Course</div>
+    <div id="output"></div>
+    <script>
+        window.onload = build;
+
+        var myArray = ['Laurence', 'Mike', 'John', 'Larry', 'Kim', 'Joanne', 'Lisa', 'Janet', 'Jane'];
+        var message = document.getElementById('message');
+
+        function build() {
+            var html = '<h1>My Friends Table</h1><table>';
+            for (var x = 0; x < myArray.length; x++) {
+                html += '<tr data-row="' + x + '" data-vote="0"><td>' + myArray[x] + '</td><td class="box">' + (x + 1) + '</td><td>0</td></tr>';
+            }
+            html += '</table>';
+            document.getElementById('output').innerHTML = html;
+
+            var boxes = document.querySelectorAll('#output .box');
+            var a, v;
+
+            for (var x = 0; x < boxes.length; x++) {
+                boxes[x].onclick = function() {
+                    // a = this.parentElement.getAttribute('data-row');
+                    a = this.closest('[data-row]').getAttribute('data-row');
+                    message.innerHTML = myArray[a] + 'is on row: #' + a;
+
+                    v = this.closest('[data-vote]').getAttribute('data-vote');
+                    v++;
+                    // this.closest('[data-vote]').setAttribute('data-vote', v);
+                    this.parentElement.setAttribute('data-vote', v);
+                    this.parentElement.lastElementChild.innerHTML = v;
+                }
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

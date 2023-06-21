@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Window Set Timeout</title>
+</head>
+<body>
+    <input type="button" value="start" onclick="startInt()">
+    <input type="button" value="stop" onclick="clearInt()">
+
+    <script>
+        var myTimer;
+
+        function startInt() {
+            // myTimer = window.setTimeout(myPopup, 1000);
+
+            myPopup();
+            myTimer = window.setTimeout(startInt, 1000);
+        }
+
+        function clearInt() {
+            // window.clearInterval(myTimer);
+            window.clearTimeout(myTimer);
+        }
+
+        function myPopup() {
+            alert("Hello");
+        }
+    </script>
+</body>
+</html>

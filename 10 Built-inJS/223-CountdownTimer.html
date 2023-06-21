@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="message">Complete JavaScript Course</div>
+    <input type="date" name="eventDate" id="eventDate" onchange="start()">
+    <div id="output"></div>
+
+    <script>
+        var cDate, eDate, s, m, h, d, t;
+        var output = document.getElementById('output');
+
+        function start() {
+            var tDate = event.target.valueAsDate;
+            
+            eDate = new Date(tDate);
+
+            
+            outputUpdate();
+
+            t = window.setTimeout(update, 1000);
+        }
+
+        function update() {
+            outputUpdate();
+
+            t = window.setTimeout(update, 1000);
+        }
+
+        function outputUpdate() {
+            cDate = new Date();
+            var dur = eDate - cDate;
+            s = Math.round((dur % (1000 * 60)) / 1000);
+            s = s < 10 ? '0' + s : s;
+
+            m = Math.round((dur % (1000 * 60 * 60)) / (1000 * 60));
+            m = m < 10 ? '0' + m : m;
+
+            h = Math.round((dur % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            d = Math.round((dur / (1000 * 60 * 60 * 24)));
+
+            output.innerHTML = d + ' Days / ' + h + ':' + m + ':' + s;
+        }
+        
+    </script>
+</body>
+</html>

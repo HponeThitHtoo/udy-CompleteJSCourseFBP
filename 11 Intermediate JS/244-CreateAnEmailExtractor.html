@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output">Complete JavaScript Course</div>
+    <form action="" name="myForm">
+        <textarea name="txtarea" id="" cols="100" rows="12"></textarea><br>
+        <input type="button" value="get emails" onclick="lookUp()"><br>
+        <textarea name="outputArea" id="" cols="100" rows="12"></textarea>
+    </form>
+
+    <script>
+        function lookUp() {
+            var rawTxt = document.myForm.txtarea.value;
+            var eData = rawTxt.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z.]+)/ig);
+            // document.myForm.outputArea.value = eData.toString();
+
+            var html = '';
+            var holder = [];
+            for (var x = 0; x < eData.length; x++) {
+                if (holder.indexOf(eData[x]) == -1) {
+                    holder.push(eData[x]);
+                }
+            }
+            document.myForm.outputArea.value = holder.join('|');
+        }
+    </script>
+</body>
+</html>

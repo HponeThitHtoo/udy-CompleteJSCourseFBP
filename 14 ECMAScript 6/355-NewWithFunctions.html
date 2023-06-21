@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output">Complete JavaScript Course</div>
+    
+    <script>
+        const output = document.getElementById('output');
+
+        function outputMessage(message = 'No Value', b = show(message, 'blank', 'new')) {
+            output.innerHTML = message;
+        }
+
+        function show() {
+            console.log(arguments);
+            // console.log(arguments[0]);
+        }
+
+        outputMessage('Hello World');
+
+
+        function myFun(a, b, c, d, e) {
+            if (arguments.length == arguments.callee.length) {
+                console.log('Okay');
+            } else {
+                console.log('Missing ' + (arguments.callee.length - arguments.length));
+            }
+
+            console.log(arguments);
+            console.log(arguments.callee.length);
+            console.log(arguments.length);
+        }
+
+        myFun(1, 2, 3);
+    </script>
+</body>
+</html>

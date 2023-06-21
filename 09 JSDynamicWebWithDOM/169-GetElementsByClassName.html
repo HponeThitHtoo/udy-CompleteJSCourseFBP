@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+    <form action="" name="myForm">
+        <input type="url" name="url" id="url" class="highlight">
+        <input type="text" name="first" id="first">
+        <input type="text" name="last" id="last">
+        <textarea name="output" class="highlight"></textarea>
+        <div id="another">Parent
+            <div id="one" class="highlight">Test 1</div>
+            <div id="two">Test 2</div>
+            <div id="three">Test 3</div>
+            <div id="four" class="highlight">Test 4</div>
+            <div id="five">Test 5</div>
+            <div id="six">Test 6</div>
+        </div>
+        <input type="button" id="btn1" onclick="myFun1()" value="Click Here">
+    </form>
+
+    <script>
+        var output = document.getElementById('output');
+        var highlightList = document.getElementsByClassName('highlight');
+
+        divList.output.innerText = 'Hello, Welcome to my page!';
+        divList[7].innerHTML = 'Welcome to my website';
+
+        function myFun1() {
+            var html = "<h1>highlightList list</h1>";
+
+            for (var i = 0; i < highlightList.length; i++) {
+                if (highlightList[i].innerText) {
+                    html += highlightList[i].innerText + "<br>";
+                } else if (highlightList[i].value) {
+                    html += highlightList[i].value + "<br>";
+                }
+                
+            }
+
+            document.getElementById('output').innerHTML = html;
+        }
+
+        
+    </script>
+</body>
+</html>

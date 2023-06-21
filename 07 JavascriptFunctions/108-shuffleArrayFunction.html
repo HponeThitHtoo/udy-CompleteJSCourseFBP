@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shuffle Array Function</title>
+</head>
+<body>
+    <div id="output"></div>
+    <input type="button" onClick="start()" value="Start Game">
+
+    <script>
+        var secretWord = ['JavaScript', 'html', 'css', 'website'];
+        var output = document.getElementById('output');
+
+        function start() {
+            shuffleArray(secretWord);
+            output.innerHTML += secretWord + "<br>";
+        }
+
+        function shuffleArray(arr) {
+            for (var x = arr.length - 1; x > 0; x--) {
+                var holder = Math.floor(Math.random() * (x + 1));
+                var temp = arr[x];
+                arr[x] = arr[holder];
+                arr[holder] = temp;
+            }
+            // return arr;
+        }
+    </script>
+</body>
+</html>

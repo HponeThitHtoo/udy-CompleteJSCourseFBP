@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output">Complete JavaScript Course</div>
+
+    <form action="" id="myForm">
+        <div>
+            Female <input type="radio" name="gender" id="f">
+            Mmale <input type="radio" name="gender" id="m">
+        </div>
+        <div>
+            Weight <input type="number" name="weight" id="weight"> lbs
+        </div>
+        <div>
+            <input type="number" name="heightFeet" id="heightFeet" value="5"> Feet
+            <input type="number" name="heightInches" id="heightInches" value="6" max="11" min="0"> Inches
+        </div>
+        <div>
+            Age <input type="number" name="age" id="age" value="30"> years
+        </div>
+        <div>
+            LifeStyle <input type="number" name="lifeStyle" id="lifeStyle" value="1" min="1" max="5"> 1 = low activity, 5 = high activity
+        </div>
+    </form>
+
+    <script>
+        // BMR = 66 + ( 6.2 × weight in pounds ) + ( 12.7 × height in inches ) – ( 6.76 × age in years )
+        // BMR = 655.1 + ( 4.35 × weight in pounds ) + ( 4.7 × height in inches ) - ( 4.7 × age in years )
+
+        var myForm = document.getElementById('myForm');
+
+        // document.forms.myForm.addEventListener('change', outputCal);
+        document.forms.myForm.onchange = outputCal;
+
+        function outputCal() {
+            // console.log(event.target);
+            function docId() {
+                let r = document.querySelector(arguments[0]);
+                r = (r.value == 'on') ? r.checked : Number(r.value);
+                return r;
+            }
+
+            let age = docId('#age');
+            let height = (docId('#heightFeet') * 12) + docId('#heightInches');
+            let weight = docId('#weight');
+            let lifeStyle = (docId('#lifeStyle') * 0.2) + 1;
+
+            let result = docId('#m') ? lifeStyle * (66 + ( 6.2 * weight) + ( 12.7 * height) - ( 6.76 * age)) : lifeStyle * (655.1 + ( 4.35 * weight) + ( 4.7 * height) - ( 4.7 * age));
+
+            document.getElementById('output').innerHTML = Math.round(result) + 'calories needed per day';
+        }
+    </script>
+</body>
+</html>

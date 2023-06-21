@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="message">Complete JavaScript Course</div>
+    <div id="wrapper">Page 1</div> <img id="imgSwap">
+    <script>
+        var i = document.getElementById('imgSwap');
+        var imgHolder = "http://via.placeholder.com/350x150/ffff00/fff?text=Image10";
+        var t;
+
+        window.onload = function () {
+            document.getElementById('imgSwap').src = imgHolder;
+        }
+        
+        i.addEventListener('click', function() {
+            console.log(event);
+            message('clicked');
+        });
+        
+        i.addEventListener('mouseover', function() {
+            t = this.src;
+            this.src = "http://via.placeholder.com/350x150/ff0000/fff?text=Image2";
+            message('Over');
+        });
+
+        i.addEventListener('mouseout', function() {
+            this.src = t;
+            message('Out');
+        });
+
+        function cImg(t) {
+            message(t.src);
+            imgHolder = t.src;
+    
+            t.src = "http://via.placeholder.com/350x150/ff0000/fff?text=Image2";
+        }
+
+        function bImg(t) {
+            t.src = imgHolder;
+        }
+
+        function message(m) {
+            document.getElementById('wrapper').innerHTML = m;
+        }
+    </script>
+</body>
+</html>

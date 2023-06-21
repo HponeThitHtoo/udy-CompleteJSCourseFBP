@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="output">Complete JavaScript Course</div>
+
+    <canvas id="canvas1" onclick="imgData()"></canvas>
+    <canvas id="canvas2"></canvas>
+    <canvas id="canvas3"></canvas>
+    <img src="comp.jpg" alt="computer image" id="myImage">
+
+    <script>
+        function imgData() {
+            // console.log(event.target.toDataURL());
+            document.getElementById('myImage').src = event.target.toDataURL();
+        }
+
+        window.onload = function() {
+            var canvas1 = document.getElementById('canvas1');
+            var ctx1 = canvas1.getContext('2d');
+
+            ctx1.fillStyle = 'red';
+            ctx1.fillRect(5, 5, 150, 100);
+
+            var canvas2 = document.getElementById('canvas2');
+            var ctx2 = canvas2.getContext('2d');
+            ctx2.beginPath();
+            ctx2.fillStyle = 'blue';
+            ctx2.arc(60, 60, 50, 0, 2 * Math.PI);
+            ctx2.stroke();
+            ctx2.fill();
+
+            /*
+            var canvas3 = document.getElementById('canvas3');
+            var ctx3 = canvas3.getContext('2d');
+            var myImage = document.getElementById('myImage');
+            ctx3.drawImage(myImage, 10, 10);
+            ctx3.drawImage(canvas1, 10, 10);
+            ctx3.drawImage(canvas2, 10, 10);
+            */
+
+            var canvas3 = document.getElementById('canvas3');
+            var ctx3 = canvas3.getContext('2d');
+            ctx3.strokeStyle = 'green';
+            ctx3.lineWidth = 10;
+            ctx3.moveTo(15, 15);
+            ctx3.lineTo(55, 120);
+            ctx3.stroke();
+        }
+
+        var canvas = document.querySelectorAll('canvas');
+
+        canvas.forEach((v) => {
+            v.addEventListener('mouseover', function() {
+                document.getElementById('myImage').src = event.target.toDataURL();
+            });
+        });
+        
+    </script>
+</body>
+</html>

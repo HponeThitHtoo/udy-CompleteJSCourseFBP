@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="message">Complete JaVaScRipt Course</div>
+
+    <input type="text" name="inputString" id="inputString">
+    <input type="number" name="lengthString" id="lengthString">
+    <input type="button" value="Check Answer" id="btn">
+    <script>
+        var a = 'world hello';
+        var b = new String('Hello World');
+
+        var message = document.getElementById('message');
+
+        var str = message.innerText;
+        var hello = b.substr(0, 6);
+        var c = str.toLowerCase().indexOf('javascript');
+        // var jscript = str.substring(c, (c + 10));
+        // var jscript = str.substr(c, 1) + str.toLowerCase().substr((c + 1), 9);
+        var jscript = str.substr(c, 1) + str.toLocaleLowerCase().substr((c + 1), 3) + str.substr((c + 4), 1) + str.toLowerCase().substr((c + 5), 5); 
+
+        message.innerHTML = hello + jscript;
+
+        var btn = document.getElementById('btn');
+
+        btn.onclick = function() {
+            
+            var inputString = document.getElementById('inputString').value;
+            var lengthString = document.getElementById('lengthString').value;
+
+            if (inputString.length == Number(lengthString)) {
+                message.innerHTML = 'Correct!. It was ' + inputString.length;
+            } else {
+                message.innerHTML = 'Wrong!. It was ' + inputString.length;
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

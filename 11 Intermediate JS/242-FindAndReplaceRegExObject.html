@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output">Complete JavScript Course Complete JavScript Course Complete JavScript Course Complete JavScript Course</div>
+    Search for: <input type="text" name="sText" id="sText"><br>
+    Replace with: <input type="text" name="rText" id="rText"><br>
+    <input type="button" value="find text" onclick="lookUp()">
+
+    <script>
+        function lookUp() {
+            var s = document.getElementById('output').innerText;
+            var st = document.getElementById('sText').value;
+            var rt = document.getElementById('rText').value;
+            var re = new RegExp(st, 'ig');
+
+            var result = s.match(re);
+            if (result) {
+                var rr = s.replace(re, rt);
+                document.getElementById('output').innerText = rr;    
+            }
+            console.log(result);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output">Complete JavaScript Course</div>
+
+    <script>
+        const output = document.getElementById('output');
+
+        function myFun1(a, b, ...c) {
+            for (let i = 0; i < c.length; i++) {
+                console.log(c[i]);
+                console.log(c.length);
+            }
+        }
+
+        myFun1(1, 2, 3, 4, 5);
+
+
+        function myFun2() {
+            let name = arguments.callee.name;
+            for (let i = 0; i < arguments.length; i++) {
+                console.log(name + ' says this value ' + arguments[i]);
+            }
+        }
+
+        myFun2(1, 2, 3);
+    </script>
+</body>
+</html>

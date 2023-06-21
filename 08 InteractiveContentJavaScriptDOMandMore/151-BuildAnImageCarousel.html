@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Build An Image Carousel</title>
+</head>
+<body onload="startImg()">
+    <div id="wrapper">Complete JavaScript Course</div>
+    <img src="" alt="" id="myImage">
+
+    <script>
+        var imagePlace = 0;
+        var images = ["1", "2", "3", "4", "5", "6", "7"];
+        var imagesC = ["111", "222", "FF0000", "00FF00", "0000FF", "000", "333"];
+
+        function startImg() {
+            swapImage();
+            
+            setInterval(swapImage, 1000);
+        }
+
+        function swapImage() {
+            
+
+            if (imagePlace >= images.length) imagePlace = 0;
+
+            var myImage = document.getElementById('myImage');
+            myImage.src = "http://via.placeholder.com/350x150/" + imagesC[imagePlace] + "/fff?text=Image" + images[imagePlace];
+
+            imagePlace++;
+        }
+    </script>
+</body>
+</html>

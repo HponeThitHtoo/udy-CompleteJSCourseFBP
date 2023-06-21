@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .toggle {
+            padding: 10px;
+            background-color: aliceblue;
+            font-size: 1.3em;
+            margin: 10px;
+        }
+
+        .active {
+            background-color: aquamarine;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>Asynchronous JavaScript and XML</div>
+    <div id="output">Complete JavaScript Course</div>
+    Guest Name:&nbsp;<input type="text" name="" id="guestName">
+    &nbsp;+&nbsp;
+    <input type="number" name="" id="guestNum" value="0">
+    <input type="button" value="add">
+
+    <script>
+        var party = [];
+        var output = document.getElementById('output');
+        var el;
+
+        window.onload = init;
+
+        /* document.querySelector('[value="add"]').addEventListener('click', function() {
+            alert('OK');
+        }); */
+
+        var addGuest = document.querySelector('input[type="button"]');
+        addGuest.addEventListener('click', function(e) {
+            var g = document.getElementById('guestName');
+            var n = document.getElementById('guestNum');
+            message('×', g.value + ' + ' + n.value, party.length, '');
+            party.push({
+                name: g.value,
+                guests: Number(n.value),
+                status: false,
+            });
+            g.value = '';
+            n.value = 0;
+        });
+
+        output.addEventListener('click', function(e) {
+            el = e.target;
+            var ds = el.dataset;
+            el.classList.toggle('active');
+            el.children[0].innerHTML = el.children[0].innerHTML === '√' ? '×' : '√';
+            party[ds.id].status = party[ds.id].status ? false : true;
+            console.log(party);
+        });
+
+        function buildList() {
+            for (var x = 0; x < party.length; x++) {
+                var person = party[x].name + ' + ' + party[x].guests;
+                if (party[x].status) {
+                    message('√', person, x, 'active');
+                } else {
+                    message('×', person, x, '');
+                }
+            }
+        }
+
+        function message(m, person, id, c) {
+            output.innerHTML += '<div class="toggle ' + c + '" data-id="' + id + '" data-person="' + person + '"><span>' + m + '</span>&nbsp;' + person + '</div>';
+        }
+
+
+        
+
+        function init() {
+            // loadJSON();
+
+            
+            loadJSON(function(response) {
+                // console.log(response);
+                // console.log(JSON.parse(response));
+                party = JSON.parse(response);
+                buildList();
+            }, 'https://api.myjson.com/bins/10ztmu');
+           
+        }
+
+        function loadJSON(callback, url) {
+            var xHR = new XMLHttpRequest;
+
+            xHR.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) { // this = xHR
+                    /* var myObj = JSON.parse(this.responseText);
+                    console.log(this.responseText); */
+                    callback(this.responseText);
+                } else {
+                    return false;
+                }
+            }
+
+            // xHR.open('GET', 'json1.json', true);
+            xHR.open('GET', url, true);
+            xHR.send();
+            // console.log(xHR);
+        }
+    </script>
+</body>
+</html>

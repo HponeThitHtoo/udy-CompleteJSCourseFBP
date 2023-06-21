@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercise Card Deck</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="start"></div> How many Players ?
+        <input type="number" name="" id="players" min="1" max="5" value="3">
+        <button id="btnDeal" type="button" onclick="startDeal()">Deal</button>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        var suits = ["spades", "hearts", "clubs", "diams"];
+        var cardFace = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+        var players = [];
+
+        function startDeal() {
+            players = [];
+            // cards = [];
+            var num = Number(document.getElementById("players").value);
+            
+            for (var i = 0; i < num; i++) {
+                players[i] = [];
+            }
+
+            var cards = buildCards();
+            
+            shuffleCards(cards);
+            
+            deal(cards);
+        }
+
+        function buildCards() {
+            var cards = [];
+            for (s in suits) {
+                var bgColor = (suits[s] == "hearts" || suits[s] == "diams") ? "red" : "black";
+
+                for (c in cardFace) {
+                    var card = {
+                        suit: suits[s],
+                        num: cardFace[c],
+                        bgColor: bgColor,
+                    }
+                    cards.push(card);
+                }
+            }
+            return cards;
+        }
+
+        function shuffleCards(arr) {
+            for (var x = arr.length - 1; x > 0; x--) {
+                var i = Math.floor(Math.random() * (x + 1));
+                var temp = arr[x];
+                arr[x] = arr[i];
+                arr[i] = temp;
+            }
+            return arr;
+        }
+
+        function deal(cards) {
+            var num = players.length;
+            var message = document.getElementById("message");
+            var p = 0;
+            for (var i = 0; i < cards.length; i++) {
+                players[p].push(cards[i]);
+                p++;
+                if (p >= num) { p = 0; }
+            }
+
+            for (var i = 0; i < num; i++) {
+                message.innerHTML += '<br>Players : ' + (i + 1) + '<br>';
+                for (var x = 0; x < players[i].length; x++) {
+                    var p = players[i][x];
+                    message.innerHTML += '<span style="color:' + p.bgColor + '">' + p.num + p.suit + '</span>';
+                }
+                message.innerHTML += '<br>';
+            }
+        }
+    </script>
+</body>
+</html>

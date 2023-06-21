@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Complete JavaScript Course</div>
+    <div>
+        <input type="text" name="" id="addFriend"> <input type="button" value="Add Friend" id="addNew">
+    </div>
+    <div id="output"></div>
+    <script>
+        window.onload = build;
+
+        var myArray = ['Laurence', 'Mike', 'John', 'Larry', 'Kim', 'Joanne', 'Lisa', 'Janet', 'Jane'];
+        var message = document.getElementById('message');
+        var addNew = document.getElementById('addNew');
+
+        addNew.onclick = function() {
+            // Value from input
+            var q = document.getElementById('addFriend').value;
+            
+            // add it to the HTML
+            var tr = document.createElement('tr');
+
+            tr.setAttribute('data-row', myArray.length);
+            tr.setAttribute('data-vote', 0);
+            
+            tr.innerHTML = '<td>' + q + '</td><td class="box">' + (myArray.length + 1) + '</td><td>0</td>';
+
+            /*
+            var td = document.createElement('td');
+            var tdTxt = document.createTextNode(q);
+            td.appendChild(tdTxt);
+            tr.appendChild(td);
+
+            var td2 = document.createElement('td');
+            tr.appendChild(td2);
+            var tdTxt2 = document.createTextNode(myArray.length + 1);
+            td2.appendChild(tdTxt2);
+
+            var td3 = document.createElement('td');
+            var tdTxt3 = document.createTextNode('0');
+            td3.appendChild(tdTxt3);
+            tr.appendChild(td3);
+            */
+
+            var container = document.querySelector('#output table tbody');
+            console.dir(container);
+            console.dir(tr);
+
+            container.appendChild(tr);      
+
+            // add it to the array
+            myArray.push(q);
+
+            voteCount();
+        }
+
+        function build() {
+            var html = '<h1>My Friends Table</h1><table>';
+            for (var x = 0; x < myArray.length; x++) {
+                html += '<tr data-row="' + x + '" data-vote="0"><td>' + myArray[x] + '</td><td class="box">' + (x + 1) + '</td><td>0</td></tr>';
+            }
+            html += '</table>';
+            document.getElementById('output').innerHTML = html;
+
+            voteCount();
+        }
+
+        function voteCount() {
+            var boxes = document.querySelectorAll('#output .box');
+            var a, v;
+
+            for (var x = 0; x < boxes.length; x++) {
+                boxes[x].onclick = function() {
+                    // a = this.parentElement.getAttribute('data-row');
+                    a = this.closest('[data-row]').getAttribute('data-row');
+                    message.innerHTML = myArray[a] + 'is on row: #' + a;
+
+                    v = this.closest('[data-vote]').getAttribute('data-vote');
+                    v++;
+                    // this.closest('[data-vote]').setAttribute('data-vote', v);
+                    this.parentElement.setAttribute('data-vote', v);
+                    this.parentElement.lastElementChild.innerHTML = v;
+                }
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

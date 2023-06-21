@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modify The Array</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        var animals = ["cat","dog","rabbit","bird","fish","zebra"];
+        animals.push("sheep"); // add item at the end of an array
+        var remove1 = animals.pop(); // remove last item from the end of an array
+        
+        animals.shift(); //remove first item
+        animals.unshift("horse");//add first item to array
+        
+        animals.splice(2,1); // remove from pos number of items
+
+        animals.reverse(); // reverse the order of items
+        animals.sort(); // sort items by value
+        */
+
+
+        /* var animals = ["cat","dog","rabbit","bird","fish","zebra"];
+        // animals.sort();
+        // animals.reverse();
+        animals.sort().reverse();
+        console.log(animals); */
+
+
+        var animals = ["cat","dog","rabbit","bird","fish","zebra"];
+        var startVal = animals.length;
+        console.log(startVal);
+
+        animals[20] = "horse";
+        var endVal = animals.length - 1;
+        console.log(endVal);
+
+        animals.fill("mouse", startVal, endVal);
+        console.log(animals);
+
+
+    </script>
+</body>
+</html>

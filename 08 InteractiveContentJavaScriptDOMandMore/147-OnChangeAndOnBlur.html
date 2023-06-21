@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper">Page 1</div>
+    <form action="">
+        First name: <input type="text" name="e1" id="e1" value="Laurence" onblur="cFun()">
+        Last name: <input type="text" name="e2" id="e2" value="Svekis" onchange="cFun()">
+        <input type="button" value="Submit">
+
+        <script>
+            function cFun() {
+                var el = event.target;
+                if (el.name == 'e1') {
+                    message("First Name Changed to " + el.value);
+                } else {
+                    message("Last Name Changed to " + el.value);
+                }
+            }
+
+            function message(m) {
+                document.getElementById('wrapper').innerHTML = m;
+            }
+        </script>
+    </form>
+</body>
+</html>

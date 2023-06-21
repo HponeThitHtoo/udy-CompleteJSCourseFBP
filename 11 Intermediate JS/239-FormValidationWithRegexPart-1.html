@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output">Complete JavaScript Course</div>
+    <input type="button" value="Validate Email" onclick="myFun()">
+    <input type="text" name="email" id="email" value="email@gmail.com">
+
+    <script>
+        var output = document.getElementById('output');
+        var str = 'asdf asdf sadf k JavaScript asdf asdf 223433 3455 323 423 3 javascript 432 564 JavaScript 232 JavaScript8899';
+
+        function myFun() {
+            var e = document.getElementById('email').value;
+            var p = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z.]+)/ig;4
+            var r = e.match(p);
+            var t = r == null ? false : true;
+            console.log(t);
+            return t;
+        }
+    </script>
+</body>
+</html>
